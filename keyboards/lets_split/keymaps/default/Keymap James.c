@@ -15,7 +15,6 @@ extern keymap_config_t keymap_config;
 
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
-  DVORAK,
   LOWER,
   RAISE,
   ADJUST,
@@ -94,10 +93,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] =  LAYOUT( \
-  RESET  , KC_NO,   _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_DEL, \
-  _______, _______, _______, KC_NO,     KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_NO ,   KC_NO, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RESET, \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO \
 )
 
 
