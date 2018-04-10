@@ -34,4 +34,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+#GRAVE_ESC_CTRL_OVERRIDE
+
+#GRAVE_ESC_ALT_OVERRIDE
+
 #endif
