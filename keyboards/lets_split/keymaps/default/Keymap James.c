@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = LAYOUT( \
   KC_NO, KC_NO, KC_AMPERSAND, KC_ASTERISK, KC_UNDS, KC_LEFT_PAREN,       KC_RIGHT_PAREN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, \
   KC_NO, KC_NO, KC_DOLLAR,     KC_PERCENT, KC_CIRCUMFLEX,   KC_LBRACKET,    KC_RBRACKET,   KC_NO,   KC_NO, KC_NO,  KC_NO, KC_NO, \
-  KC_NO, KC_NO; KC_EXLM,            KC_AT, KC_HASH,   KC_SLASH,               KC_BSLASH,  KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO, \
+  KC_NO, KC_NO; KC_EXLM,            KC_AT, KC_NUHS,   KC_SLASH,               KC_BSLASH,  KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO, \
   KC_NO, KC_NO, ADJUST,             KC_NO, LOWER, KC_NO,                          KC_NO, RAISE, KC_NO, KC_NO, KC_NO, KC_NO \
 ),
   // KC_UNDERSCORE is left shift and - to get'_'
@@ -118,15 +118,6 @@ void persistent_default_layer_set(uint16_t default_layer) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) 
   {
-    case DVORAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
-        #endif
-        persistent_default_layer_set(1UL<<_DVORAK);
-      }
-      return false;
-      break;
     case LOWER:
       if (record->event.pressed) {
         layer_on(_LOWER);
