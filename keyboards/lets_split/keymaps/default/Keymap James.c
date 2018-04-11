@@ -11,7 +11,8 @@ extern keymap_config_t keymap_config;
 #define _DVORAK 0
 #define _LOWER 1
 #define _RAISE 2
-#define _ADJUST 16
+#define _ADJUST 4
+
 
 enum custom_keycodes {
   DVORAK = SAFE_RANGE,
@@ -35,14 +36,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   ;  |   Q  |   J  |   K  |   X |||  B  |   M  |   W  |   V  |   Z  | DEL  |
  * |------+------+------+------+------+-----|||-----+------+------+------+------+------|
- * | Ctrl | GUI  |      | ALT  |Lower |Space|||Space|Raise | Left | Down |  Up  |Right |
+ * | Ctrl | GUI  |ADJUST| ALT  |Lower |Space|||Space|Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = LAYOUT( \
   KC_ESC,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC, \
   KC_TAB,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_ENT, \
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_DEL, \
-  KC_LCTL,  KC_LGUI, KC_LALT, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
+  KC_LCTL,  KC_LGUI, ADJUST, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
 
 /* Lower
@@ -58,28 +59,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_LOWER] = LAYOUT( \
   KC_GRV, KC_F7, KC_F8,   KC_F9, KC_NO,  KC_NO,          KC_SLSH, KC_7,  KC_8,     KC_9,   KC_MINS, KC_NO, \
-  KC_NO, KC_F4, KC_F5,   KC_F6, KC_NO,  KC_NO,          KC_ASTR, KC_4,  KC_5 ,    KC_6,   KC_PLUS, KC_NO, \
+  KC_NO, KC_F4, KC_F5,   KC_F6, KC_NO,  KC_NO,           KC_ASTR, KC_4,  KC_5 ,    KC_6,   KC_PLUS, KC_NO, \
   KC_NO,  KC_F1, KC_F2,   KC_F3, KC_NO,  KC_NO,          KC_NO,   KC_1,  KC_2,     KC_3,   KC_NO,   KC_NO, \
-  KC_NO,  KC_NO, KC_NO,   KC_NO, KC_NO,  KC_NO,          KC_0  ,KC_TRNS, KC_MNXT,  KC_VOLD,KC_VOLU, KC_MPLY \
+  KC_NO,  KC_NO, ADJUST, KC_NO, LOWER,KC_NO,          KC_0  ,RAISE, KC_MNXT,  KC_VOLD,KC_VOLU, KC_MPLY \
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
+ * |      |      |   &  |  *   |   _  |   (  |  )   |      |      |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | / (?)| \ (|)| [ ({)| ] (})|      |
+ * |      |      |   $  |  %   |   ^  | [ ({)| ] (})|      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |   ?  |   |  |      |      |      |
+ * |      |      |   !  |  @   |   #  |\ (|) | / (?)|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |     |||     |~RAISE|      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL, \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, _______, _______, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
+  KC_NO, KC_NO, KC_AMPERSAND, KC_ASTERISK, KC_UNDS, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, \
+  KC_NO, KC_NO, KC_DOLLAR,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_NO, KC_NO, \
+  KC_NO, KC_EXLM,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_NO, KC_NO, KC_NO, \
+  KC_NO, KC_NO, ADJUST, KC_NO, LOWER, KC_NO, KC_NO, RAISE, KC_NO, KC_NO, KC_NO, KC_NO \
 ),
+  // KC_UNDERSCORE is left shift and - to get'_'
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
@@ -94,12 +96,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  LAYOUT( \
   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MS_ACCEL0, RESET, \
-  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_SYSTEM_SLEEP, \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LALT(LCTL(KC_DEL)), KC_SYSTEM_SLEEP, \
   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PWR, \
-  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_POWER \
+  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RAISE, KC_NO, KC_NO, KC_NO, KC_POWER \
 )
 //KC_POWER is for Linux, KC_PWR is for Microsoft, KC_SYSTEM_SLEEP is universal,
 //RESET is a reset to the keyboard, and KC_MS_ACCEL0 sets mouse acceleration to zero. 
+
+// LALT(LCTL(KC_DEL)) GIVES left control, alt and del.
 
 };
 
